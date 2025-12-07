@@ -24,7 +24,7 @@ Counting bacterial colonies on petri dishes is a fundamental but tedious task in
 The model effectively detects colonies even in challenging lighting conditions or with high density.
 
 ![Comparison Result](assets/images/comparison_demo.png)
-*Left: Raw Input Image | Right: AI Detection Output (Count: 142)*
+*Left: Raw Input Image | Right: AI Detection Output (Count: 14)*
 
 ### 2. User Interface Workflow
 The web interface is designed for intuitive usage by lab technicians.
