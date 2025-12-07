@@ -78,7 +78,7 @@ The model was trained for over 100 epochs. Below are the actual metrics obtained
 ### 1. Training Dynamics
 The training curves show a steady decrease in loss, indicating that the model successfully learned to generalize features of the colonies.
 
-![Training Results](assets/images/results.jpg)
+![Training Results](assets/images/results.png)
 *Figure 1: Comprehensive training metrics showing Box Loss convergence and mAP improvement.*
 
 ### 2. Precision-Recall Curve
