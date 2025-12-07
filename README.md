@@ -39,7 +39,42 @@ The web interface is designed for intuitive usage by lab technicians.
 ## 🏗️ System Architecture
 The system follows a microservices-like architecture, separating the heavy AI inference from the client-side interaction.
 
-![Architecture Diagram](assets/images/system_architecture.png)
+%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#ffcc00', 'edgeLabelBackground':'#ffffff', 'tertiaryColor': '#f4f4f4'}}}%%
+graph TD
+    User([👤 User / Lab Technician])
+    
+    subgraph "Frontend (Client Browser)"
+        Vue[Vue.js / Nuxt UI]
+    end
+    
+    subgraph "Docker Container / Server"
+        FastAPI[⚡ FastAPI Backend]
+        YOLO[🧠 YOLOv8/v11 AI Engine]
+        DB[(🗄️ SQLite / PostgreSQL Database)]
+        Storage[📂 Local File Storage / Temp]
+    end
+
+    %% Data Flow
+    User -- "1. Uploads Image / Edits Boxes" --> Vue
+    Vue -- "2. POST image via API" --> FastAPI
+    FastAPI -- "3. Save temp image" --> Storage
+    FastAPI -- "4. Request Inference" --> YOLO
+    YOLO -.-> |"Load image"| Storage
+    YOLO -- "5. Return Detections (JSON)" --> FastAPI
+    FastAPI -- "6. Save prediction metadata" --> DB
+    FastAPI -- "7. Return Result (JSON)" --> Vue
+    Vue -- "8. Display Interactive Overlay" --> User
+
+    %% Styling
+    classDef frontend fill:#4FC08D,stroke:#333,stroke-width:2px,color:white;
+    classDef backend fill:#009688,stroke:#333,stroke-width:2px,color:white;
+    classDef ai fill:#9C27B0,stroke:#333,stroke-width:2px,color:white;
+    classDef storage fill:#607D8B,stroke:#333,stroke-width:2px,color:white;
+    
+    class Vue frontend;
+    class FastAPI backend;
+    class YOLO ai;
+    class DB,Storage storage;
 
 **Core Components:**
 * **Frontend (Vue.js / Nuxt):** Handles image uploads and utilizes HTML5 Canvas for an interactive bounding-box editor (allowing users to add/delete/resize boxes).
