@@ -154,12 +154,3 @@ The model achieves a **mAP@0.5 of 0.57**, which establishes a solid baseline for
 3.  **Adaptive Thresholding:** Users can adjust confidence thresholds dynamically on the frontend to filter out noise without re-running the model.
 
 ---
-
-## 📬 Contact
-**[Your Name]**
-* 🎓 Student at Faculty of ICT, Mahidol University
-* 📧 Email: [Your Email]
-* 🔗 LinkedIn: [Your LinkedIn Profile]
-
----
-*© 2025 [Your Name]. All Rights Reserved.*
