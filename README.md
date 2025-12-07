@@ -1,4 +1,4 @@
-# 🧫 AI Colony Detection System (Colony-Count-YOLO)
+#  AI Colony Detection System (Colony-Count-YOLO)
 
 ![Project Status](https://img.shields.io/badge/Status-Completed-success)
 ![Python](https://img.shields.io/badge/Python-3.10-blue)
@@ -7,18 +7,17 @@
 ![Vue.js](https://img.shields.io/badge/Frontend-Vue.js%203-4FC08D)
 ![Docker](https://img.shields.io/badge/Deployment-Docker-2496ED)
 
-> **⚠️ Disclaimer:** This repository serves as a **technical portfolio showcase**. The source code is currently private. This document details the system architecture, development methodology, and performance metrics.
 
 ---
 
-## 📖 Executive Summary
+##  Executive Summary
 Counting bacterial colonies on petri dishes is a fundamental but tedious task in microbiology. Manual counting is time-consuming and prone to human error.
 
 **Colony-Count-YOLO** is an end-to-end web application that automates this process using computer vision. It allows users to upload images, receive instant counts with visual bounding boxes, manually correct the results (Human-in-the-loop), and export reports. The system is containerized for easy deployment and supports GPU acceleration.
 
 ---
 
-## 👁️ Visual Demonstration
+##  Visual Demonstration
 
 ### 1. Detection Results (Before vs. After)
 The model effectively detects colonies even in challenging lighting conditions or with high density.
@@ -36,7 +35,7 @@ The web interface is designed for intuitive usage by lab technicians.
 
 ---
 
-## 🏗️ System Architecture
+##  System Architecture
 The system follows a microservices-like architecture, separating the heavy AI inference from the client-side interaction.
 
 ```mermaid
@@ -81,7 +80,7 @@ graph TD
 
 ---
 
-## 🧠 AI Methodology & Training
+##  AI Methodology & Training
 
 ### 1. Dataset Preparation
 * **Data Collection:** Custom dataset of petri dish images.
@@ -103,7 +102,7 @@ Trained using **YOLOv8 / YOLOv11** architectures via Transfer Learning.
 
 ---
 
-## 📊 Performance & Evaluation
+##  Performance & Evaluation
 
 The model was trained for over 100 epochs. Below are the actual metrics obtained from the validation set.
 
@@ -129,7 +128,7 @@ The model achieves a **mAP@0.5 of 0.57**, which establishes a solid baseline for
 
 ---
 
-## 🛠️ Technical Stack
+##  Technical Stack
 
 **Data Science & AI**
 * Python (Pandas, NumPy, OpenCV)
@@ -148,7 +147,7 @@ The model achieves a **mAP@0.5 of 0.57**, which establishes a solid baseline for
 
 ---
 
-## 🚀 Key Features Highlights
+##  Key Features Highlights
 1.  **Human-in-the-loop:** The AI provides the initial count, but users can refine the results. These "corrected" annotations are saved and can be used to re-train the model, creating a continuous learning loop.
 2.  **Report Generation:** Automated PDF/CSV export containing image thumbnails, total counts, and confidence scores for lab records.
 3.  **Adaptive Thresholding:** Users can adjust confidence thresholds dynamically on the frontend to filter out noise without re-running the model.
