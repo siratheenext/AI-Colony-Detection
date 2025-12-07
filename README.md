@@ -73,21 +73,27 @@ Trained using **YOLOv8 / YOLOv11** architectures via Transfer Learning.
 
 ## 📊 Performance & Evaluation
 
-The model demonstrates high precision in identifying individual colonies. Below are the metrics from the validation set.
+The model was trained for over 100 epochs. Below are the actual metrics obtained from the validation set.
 
-### Training Metrics
-![Training Curves](assets/images/results_graph.png)
-*Training graphs showing the convergence of Box Loss and increase in mAP over epochs.*
+### 1. Training Dynamics
+The training curves show a steady decrease in loss, indicating that the model successfully learned to generalize features of the colonies.
 
-### Confusion Matrix & Precision
-![Confusion Matrix](assets/images/confusion_matrix.png)
+![Training Results](assets/images/results.jpg)
+*Figure 1: Comprehensive training metrics showing Box Loss convergence and mAP improvement.*
 
-**Key Performance Indicators:**
+### 2. Precision-Recall Curve
+The model achieves a **mAP@0.5 of 0.57**, which establishes a solid baseline for detecting small, dense objects like bacterial colonies.
+
+![PR Curve](assets/images/PR_curve.png)
+*Figure 2: Precision-Recall curve illustrating the trade-off between detection accuracy and coverage.*
+
+### Key Performance Indicators (Actual)
 | Metric | Value | Interpretation |
 | :--- | :--- | :--- |
-| **mAP@0.5** | **0.9X** | Excellent detection rate at standard threshold. |
-| **mAP@0.5:0.95** | **0.XX** | High localization accuracy. |
-| **Inference Speed** | **~25ms** | Real-time processing capability (on NVIDIA GPU). |
+| **mAP@0.5** | **0.57** | Moderate detection capability; suitable for assisted counting. |
+| **Best F1 Score**| **0.56** | Achieved at confidence threshold of **0.262**. |
+| **Precision** | **~0.60** | The model is fairly conservative in its predictions. |
+| **Inference Speed** | **~76ms** | Fast enough for web-based interactive usage. |
 
 ---
 
