@@ -39,42 +39,39 @@ The web interface is designed for intuitive usage by lab technicians.
 ## 🏗️ System Architecture
 The system follows a microservices-like architecture, separating the heavy AI inference from the client-side interaction.
 
-%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#ffcc00', 'edgeLabelBackground':'#ffffff', 'tertiaryColor': '#f4f4f4'}}}%%
+```mermaid
 graph TD
+    %% Define Nodes
     User([👤 User / Lab Technician])
     
-    subgraph "Frontend (Client Browser)"
+    subgraph Client ["🖥️ Frontend (Browser)"]
         Vue[Vue.js / Nuxt UI]
     end
     
-    subgraph "Docker Container / Server"
+    subgraph Server ["☁️ Docker Container / Backend"]
         FastAPI[⚡ FastAPI Backend]
-        YOLO[🧠 YOLOv8/v11 AI Engine]
-        DB[(🗄️ SQLite / PostgreSQL Database)]
-        Storage[📂 Local File Storage / Temp]
+        YOLO[🧠 YOLOv8 AI Engine]
+        DB[(🗄️ Database)]
+        Storage[📂 Temp Storage]
     end
 
-    %% Data Flow
-    User -- "1. Uploads Image / Edits Boxes" --> Vue
-    Vue -- "2. POST image via API" --> FastAPI
-    FastAPI -- "3. Save temp image" --> Storage
-    FastAPI -- "4. Request Inference" --> YOLO
-    YOLO -.-> |"Load image"| Storage
-    YOLO -- "5. Return Detections (JSON)" --> FastAPI
-    FastAPI -- "6. Save prediction metadata" --> DB
-    FastAPI -- "7. Return Result (JSON)" --> Vue
-    Vue -- "8. Display Interactive Overlay" --> User
+    %% Data Flow Lines
+    User -- "1. Upload Image" --> Vue
+    Vue -- "2. Send API Request" --> FastAPI
+    FastAPI -- "3. Save Temp File" --> Storage
+    FastAPI -- "4. Run Inference" --> YOLO
+    YOLO -.-> |"Read Image"| Storage
+    YOLO -- "5. Return JSON Result" --> FastAPI
+    FastAPI -- "6. Log History" --> DB
+    FastAPI -- "7. Response to Client" --> Vue
+    Vue -- "8. Show Overlay Box" --> User
 
     %% Styling
-    classDef frontend fill:#4FC08D,stroke:#333,stroke-width:2px,color:white;
-    classDef backend fill:#009688,stroke:#333,stroke-width:2px,color:white;
-    classDef ai fill:#9C27B0,stroke:#333,stroke-width:2px,color:white;
-    classDef storage fill:#607D8B,stroke:#333,stroke-width:2px,color:white;
-    
-    class Vue frontend;
-    class FastAPI backend;
-    class YOLO ai;
-    class DB,Storage storage;
+    style Vue fill:#42b883,stroke:#333,stroke-width:2px,color:white
+    style FastAPI fill:#009688,stroke:#333,stroke-width:2px,color:white
+    style YOLO fill:#ff5252,stroke:#333,stroke-width:2px,color:white
+    style DB fill:#3f51b5,stroke:#333,stroke-width:2px,color:white
+```
 
 **Core Components:**
 * **Frontend (Vue.js / Nuxt):** Handles image uploads and utilizes HTML5 Canvas for an interactive bounding-box editor (allowing users to add/delete/resize boxes).
