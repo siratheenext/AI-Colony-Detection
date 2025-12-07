@@ -1,4 +1,4 @@
-# AI Colony Detection System (Colony-Count-YOLO)
+<img width="615" height="531" alt="image" src="https://github.com/user-attachments/assets/490db8c7-9ffe-4284-862b-c30e01b0a57a" /># AI Colony Detection System (Colony-Count-YOLO)
 
 ![Project Status](https://img.shields.io/badge/Status-Completed-success)
 ![Python](https://img.shields.io/badge/Python-3.10-blue)
@@ -22,7 +22,8 @@ Counting bacterial colonies on petri dishes is a fundamental but tedious task in
 ### 1. Detection Results (Before vs. After)
 The model effectively detects colonies even in challenging lighting conditions or with high density.
 
-![Comparison Result](assets/images/comparison_demo.png)
+![Comparison Result](<img width="615" height="531" alt="image" src="https://github.com/user-attachments/assets/6e435056-4e6a-47b4-a5d3-bdd80f631ded" />
+)
 *Left: Raw Input Image | Right: AI Detection Output (Count: 142)*
 
 ### 2. User Interface Workflow
